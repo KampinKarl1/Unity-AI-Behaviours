@@ -38,7 +38,7 @@ namespace GamePlay
 
         public void MakeADangerousSound(float range)
         {
-            var sound = new Sound(transform.position, range, Sound.SoundType.Dangerous
+            var sound = new Sound(transform.position, range, Sound.SoundType.Dangerous);
             
             Sounds.MakeSound(sound);
         }

@@ -25,10 +25,8 @@ namespace GamePlay
 
         public void MakeASound(float range)
         {
-            var sound = new Sound(transform.position, range);
-
-            sound.soundType = Sound.SoundType.Interesting;
-
+            var sound = new Sound(transform.position, range, Sound.SoundType.Interesting);
+            
             Sounds.MakeSound(sound);
         }
     }

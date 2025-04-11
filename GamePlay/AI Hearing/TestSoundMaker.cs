@@ -8,7 +8,7 @@ namespace GamePlay
 
         [SerializeField] private float soundRange = 25f;
         
-        [SerializeField] private Sound.SoundType soundType = Sound.SoundType.Dangerous;
+        [SerializeField] private Sound.SoundType soundType = Sound.SoundType.Danger;
 
         private void OnMouseDown()
         {

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chaser : MonoBehaviour, IInstincts
+public class Chaser : MonoBehaviour
 {
     [SerializeField] private NavAgentMover mover = null;
     [SerializeField] private Transform target = null;
@@ -45,8 +45,8 @@ public class Chaser : MonoBehaviour, IInstincts
         if (other.TryGetComponent(out IInstincts instincts) && instincts.PredatorLevel() >= predatorLevel)
             return;
 
-        //If dont have target or if the new poss. target is slower than current
-        if (target == null || SlowerThanCurTarget(other.transform) || CloserThanCurTarget(other.transform))
+        //If dont have target or if the new target is closer
+        if (target == null || CloserThanCurTarget(other.transform))
             target = other.transform;
     }
 
@@ -86,18 +86,6 @@ public class Chaser : MonoBehaviour, IInstincts
     private bool CloserThanCurTarget(Transform other)
     {
         return Vector3.Distance(other.position, transform.position) < Vector3.Distance(target.position, transform.position);
-    }
-
-    private bool SlowerThanCurTarget(Transform other) 
-    {
-        if (other.TryGetComponent(out ISpeed spd1) && target.TryGetComponent(out ISpeed spd2))
-            return spd1.GetMaxSpeed() < spd2.GetMaxSpeed();
-        return false;
-    }
-
-    public void BecomePreyOf(Transform predator)
-    {
-       
     }
 
     [SerializeField] private int predatorLevel = 5;

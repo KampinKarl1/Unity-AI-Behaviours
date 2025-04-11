@@ -28,7 +28,7 @@ public class FunctionalAdult : MonoBehaviour, IHear
     
         if (sound.soundType == Sound.SoundType.Interesting)
             MoveTo(sound.pos);
-        else if (sound.soundType == Sound.SoundType.Danger) //Must have this case so that it doesn't run away from the default sound type
+        else if (sound.soundType == Sound.SoundType.Dangerous) //Must have this case so that it doesn't run away from the default sound type
         {
             Vector3 dir = (sound.pos - transform.position).normalized;
             MoveTo(transform.position - (dir * displacementFromDanger));

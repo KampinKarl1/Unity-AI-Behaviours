@@ -14,7 +14,7 @@ public class Chaser : MonoBehaviour, IInstincts
 
     private void Start()
     {
-        mover.MoveToPos(transform.position + Vec3_Utils.SomeplaceNearby(searchRadius));
+        mover.MoveToPos(transform.position + Vec3_Utils.WithinRadiusOfOrigin(searchRadius));
     }
 
     void Update()
@@ -33,7 +33,7 @@ public class Chaser : MonoBehaviour, IInstincts
         }
         //search for targets
          if (mover.HasArrived)
-            mover.MoveToPos(transform.position + Vec3_Utils.SomeplaceNearby(searchRadius));
+            mover.MoveToPos(transform.position + Vec3_Utils.WithinRadiusOfOrigin(searchRadius));
     }
 
     private void OnTriggerEnter(Collider other)

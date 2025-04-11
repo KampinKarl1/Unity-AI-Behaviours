@@ -100,7 +100,7 @@ public class RunAway : MonoBehaviour, IInstincts
         if (mover.HasArrived && PassedTime(nextMoveTime))
         {
             nextMoveTime = SetFutureRandomTime(MIN_BTWN_MOVES, 5f);
-            mover.MoveToPos(Vec3_Utils.PlaceNearMe(transform, 12f));
+            mover.MoveToPos(Vec3_Utils.RandPosNearTransform(transform, 12f));
         }
 
         if (PassedTime(nextCluckTime)) 

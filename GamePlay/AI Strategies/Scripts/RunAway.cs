@@ -58,7 +58,10 @@ public class RunAway : MonoBehaviour, IInstincts
     }
 
     #region Become Prey and Stop being prey logic
-
+    /// <summary>
+    /// The closer to 1.0, the more it's facing you. If negative, it's looking away.
+    /// </summary>
+    const float LookingAtMeLevel = .75f;
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Animal") ||
@@ -66,8 +69,8 @@ public class RunAway : MonoBehaviour, IInstincts
             return;
 
         //If it looks like it's coming toward me
-        if (Vector3.Dot(other.transform.forward.normalized, transform.position.normalized) > .5f)
-            BecomePreyOf(other.transform);
+        if (Vector3.Dot(other.transform.forward.normalized, transform.position.normalized) > LookingAtMeLevel)
+            Debug.Log($"{other.name} is looking at me!");
     }
 
     private void OnTriggerExit(Collider other)
